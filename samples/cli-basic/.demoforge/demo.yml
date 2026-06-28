@@ -1,0 +1,39 @@
+version: 1
+
+demo:
+  name: "FakeCli basic demo"
+  description: "Generate README-ready assets from a simple CLI recipe."
+  outputDir: "assets/demo"
+  cleanOutputDir: true
+
+terminal:
+  theme: "dark"
+  width: 100
+  height: 28
+  fontSize: 16
+  prompt: "$"
+  showPrompt: true
+
+workingDirectory: "."
+
+steps:
+  - title: "Show help"
+    command: "dotnet run --project ../fake-cli/FakeCli -- --help"
+    timeoutSeconds: 30
+    expectExitCode: 0
+
+  - title: "Say hello"
+    command: "dotnet run --project ../fake-cli/FakeCli -- hello"
+    timeoutSeconds: 30
+    expectExitCode: 0
+
+export:
+  formats:
+    - transcript
+    - session-json
+    - markdown
+    - html
+    - readme-snippet
+  readme:
+    title: "Demo"
+    relativeAssetPath: "assets/demo/demo.html"

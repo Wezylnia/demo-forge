@@ -1,0 +1,46 @@
+# DemoForge self-demo
+
+DemoForge validates its own recipe and then generates artifacts from the bundled sample recipe.
+
+## Build DemoForge
+
+```bash
+$ dotnet build DemoForge.slnx
+  Determining projects to restore...
+  All projects are up-to-date for restore.
+  DemoForge.Core -> C:\proje\demo-forge\src\DemoForge.Core\bin\Debug\net10.0\DemoForge.Core.dll
+  DemoForge.Media -> C:\proje\demo-forge\src\DemoForge.Media\bin\Debug\net10.0\DemoForge.Media.dll
+  DemoForge.Cli -> C:\proje\demo-forge\src\DemoForge.Cli\bin\Debug\net10.0\DemoForge.Cli.dll
+  DemoForge.Core.Tests -> C:\proje\demo-forge\tests\DemoForge.Core.Tests\bin\Debug\net10.0\DemoForge.Core.Tests.dll
+  FakeCli -> C:\proje\demo-forge\samples\fake-cli\FakeCli\bin\Debug\net10.0\FakeCli.dll
+
+Build succeeded.
+    0 Warning(s)
+    0 Error(s)
+
+Time Elapsed 00:00:00.81
+# exit code: 0
+```
+
+## Validate the self-demo recipe
+
+```bash
+$ dotnet run --no-build --project src/DemoForge.Cli -- validate docs/self-demo/demo.yml
+Recipe is valid: C:\proje\demo-forge\docs\self-demo\demo.yml
+# exit code: 0
+```
+
+## Generate artifacts from the bundled sample
+
+```bash
+$ dotnet run --no-build --project src/DemoForge.Cli -- run samples/cli-basic/.demoforge/demo.yml
+Demo generated successfully.
+- transcript: C:\proje\demo-forge\samples\cli-basic\assets\demo\transcript.txt
+- session-json: C:\proje\demo-forge\samples\cli-basic\assets\demo\session.json
+- markdown: C:\proje\demo-forge\samples\cli-basic\assets\demo\demo.md
+- html: C:\proje\demo-forge\samples\cli-basic\assets\demo\demo.html
+- readme-snippet: 
+C:\proje\demo-forge\samples\cli-basic\assets\demo\README-snippet.md
+- manifest: C:\proje\demo-forge\samples\cli-basic\assets\demo\manifest.json
+# exit code: 0
+```

@@ -1,0 +1,12 @@
+{
+  "Name": "DemoForge self-demo",
+  "OutputDirectory": "C:\\proje\\demo-forge\\docs\\self-demo\\artifacts",
+  "CreatedAtUtc": "2026-06-28T18:27:22.4577897+00:00",
+  "Formats": {
+    "transcript": "transcript.txt",
+    "session-json": "session.json",
+    "markdown": "demo.md",
+    "html": "demo.html",
+    "readme-snippet": "README-snippet.md"
+  }
+}

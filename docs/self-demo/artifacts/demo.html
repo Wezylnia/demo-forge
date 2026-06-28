@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>DemoForge self-demo</title>
+  <style>
+    :root { --bg: #0b1220; --panel: #111827; --text: #e5e7eb; --muted: #94a3b8; --accent: #38bdf8; --stderr: #fca5a5; }
+    body { margin: 0; font-family: 'Cascadia Code', 'Fira Code', monospace; background: radial-gradient(circle at top, #172554 0%, #0b1220 55%); color: var(--text); }
+    main { max-width: 1000px; margin: 0 auto; padding: 48px 20px 80px; }
+    h1, h2 { font-family: 'Segoe UI', sans-serif; }
+    .terminal { background: rgba(15, 23, 42, 0.94); border: 1px solid rgba(148, 163, 184, 0.2); border-radius: 18px; overflow: hidden; box-shadow: 0 24px 80px rgba(15, 23, 42, 0.4); margin-bottom: 28px; }
+    .terminal-header { display: flex; justify-content: space-between; align-items: center; padding: 14px 18px; background: rgba(30, 41, 59, 0.92); color: var(--muted); font-size: 14px; }
+    .terminal-body { padding: 18px; font-size: 15px; line-height: 1.55; white-space: pre-wrap; }
+    .stderr { color: var(--stderr); }
+    .meta { color: var(--muted); font-size: 14px; margin-bottom: 28px; }
+    .pill { display: inline-block; padding: 4px 10px; border-radius: 999px; background: rgba(56, 189, 248, 0.12); color: var(--accent); margin-right: 8px; }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>DemoForge self-demo</h1>
+    <p class="meta">DemoForge validates its own recipe and then generates artifacts from the bundled sample recipe.</p>
+    <p class="meta"><span class="pill">powershell</span><span class="pill">100x28</span></p>
+    <section class="terminal">
+      <div class="terminal-header"><strong>Build DemoForge</strong><span>1133 ms</span></div>
+      <div class="terminal-body">
+        <div>$ dotnet build DemoForge.slnx</div>
+        <div>  Determining projects to restore...</div>
+        <div>  All projects are up-to-date for restore.</div>
+        <div>  DemoForge.Core -&gt; C:\proje\demo-forge\src\DemoForge.Core\bin\Debug\net10.0\DemoForge.Core.dll</div>
+        <div>  DemoForge.Media -&gt; C:\proje\demo-forge\src\DemoForge.Media\bin\Debug\net10.0\DemoForge.Media.dll</div>
+        <div>  DemoForge.Cli -&gt; C:\proje\demo-forge\src\DemoForge.Cli\bin\Debug\net10.0\DemoForge.Cli.dll</div>
+        <div>  DemoForge.Core.Tests -&gt; C:\proje\demo-forge\tests\DemoForge.Core.Tests\bin\Debug\net10.0\DemoForge.Core.Tests.dll</div>
+        <div>  FakeCli -&gt; C:\proje\demo-forge\samples\fake-cli\FakeCli\bin\Debug\net10.0\FakeCli.dll</div>
+        <div></div>
+        <div>Build succeeded.</div>
+        <div>    0 Warning(s)</div>
+        <div>    0 Error(s)</div>
+        <div></div>
+        <div>Time Elapsed 00:00:00.81</div>
+        <div>exit code: 0</div>
+      </div>
+    </section>
+    <section class="terminal">
+      <div class="terminal-header"><strong>Validate the self-demo recipe</strong><span>805 ms</span></div>
+      <div class="terminal-body">
+        <div>$ dotnet run --no-build --project src/DemoForge.Cli -- validate docs/self-demo/demo.yml</div>
+        <div>Recipe is valid: C:\proje\demo-forge\docs\self-demo\demo.yml</div>
+        <div>exit code: 0</div>
+      </div>
+    </section>
+    <section class="terminal">
+      <div class="terminal-header"><strong>Generate artifacts from the bundled sample</strong><span>3687 ms</span></div>
+      <div class="terminal-body">
+        <div>$ dotnet run --no-build --project src/DemoForge.Cli -- run samples/cli-basic/.demoforge/demo.yml</div>
+        <div>Demo generated successfully.</div>
+        <div>- transcript: C:\proje\demo-forge\samples\cli-basic\assets\demo\transcript.txt</div>
+        <div>- session-json: C:\proje\demo-forge\samples\cli-basic\assets\demo\session.json</div>
+        <div>- markdown: C:\proje\demo-forge\samples\cli-basic\assets\demo\demo.md</div>
+        <div>- html: C:\proje\demo-forge\samples\cli-basic\assets\demo\demo.html</div>
+        <div>- readme-snippet: </div>
+        <div>C:\proje\demo-forge\samples\cli-basic\assets\demo\README-snippet.md</div>
+        <div>- manifest: C:\proje\demo-forge\samples\cli-basic\assets\demo\manifest.json</div>
+        <div>exit code: 0</div>
+      </div>
+    </section>
+  </main>
+</body>
+</html>

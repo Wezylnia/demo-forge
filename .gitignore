@@ -6,3 +6,7 @@ artifacts/
 .idea/
 .demoforge/
 assets/
+!samples/cli-basic/.demoforge/
+!samples/cli-basic/.demoforge/demo.yml
+!docs/self-demo/artifacts/
+!docs/self-demo/artifacts/**

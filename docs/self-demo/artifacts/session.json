@@ -1,0 +1,215 @@
+{
+  "DemoName": "DemoForge self-demo",
+  "Description": "DemoForge validates its own recipe and then generates artifacts from the bundled sample recipe.",
+  "Shell": "powershell",
+  "StartedAtUtc": "2026-06-28T18:27:16.8232408+00:00",
+  "DurationMs": 5633,
+  "Steps": [
+    {
+      "Title": "Build DemoForge",
+      "Command": "dotnet build DemoForge.slnx",
+      "WorkingDirectory": "C:\\proje\\demo-forge",
+      "StartedAtUtc": "2026-06-28T18:27:16.8265947+00:00",
+      "EndedAtUtc": "2026-06-28T18:27:17.9604963+00:00",
+      "DurationMs": 1133,
+      "ExitCode": 0,
+      "TimedOut": false,
+      "Events": [
+        {
+          "Offset": "00:00:00.0010285",
+          "Kind": 0,
+          "Text": "Build DemoForge"
+        },
+        {
+          "Offset": "00:00:00.0010516",
+          "Kind": 1,
+          "Text": "$ dotnet build DemoForge.slnx"
+        },
+        {
+          "Offset": "00:00:01.1391914",
+          "Kind": 2,
+          "Text": "  Determining projects to restore..."
+        },
+        {
+          "Offset": "00:00:01.1391962",
+          "Kind": 2,
+          "Text": "  All projects are up-to-date for restore."
+        },
+        {
+          "Offset": "00:00:01.1391964",
+          "Kind": 2,
+          "Text": "  DemoForge.Core -\u003E C:\\proje\\demo-forge\\src\\DemoForge.Core\\bin\\Debug\\net10.0\\DemoForge.Core.dll"
+        },
+        {
+          "Offset": "00:00:01.1391981",
+          "Kind": 2,
+          "Text": "  DemoForge.Media -\u003E C:\\proje\\demo-forge\\src\\DemoForge.Media\\bin\\Debug\\net10.0\\DemoForge.Media.dll"
+        },
+        {
+          "Offset": "00:00:01.1391982",
+          "Kind": 2,
+          "Text": "  DemoForge.Cli -\u003E C:\\proje\\demo-forge\\src\\DemoForge.Cli\\bin\\Debug\\net10.0\\DemoForge.Cli.dll"
+        },
+        {
+          "Offset": "00:00:01.1391982",
+          "Kind": 2,
+          "Text": "  DemoForge.Core.Tests -\u003E C:\\proje\\demo-forge\\tests\\DemoForge.Core.Tests\\bin\\Debug\\net10.0\\DemoForge.Core.Tests.dll"
+        },
+        {
+          "Offset": "00:00:01.1391983",
+          "Kind": 2,
+          "Text": "  FakeCli -\u003E C:\\proje\\demo-forge\\samples\\fake-cli\\FakeCli\\bin\\Debug\\net10.0\\FakeCli.dll"
+        },
+        {
+          "Offset": "00:00:01.1391984",
+          "Kind": 2,
+          "Text": ""
+        },
+        {
+          "Offset": "00:00:01.1391985",
+          "Kind": 2,
+          "Text": "Build succeeded."
+        },
+        {
+          "Offset": "00:00:01.1391985",
+          "Kind": 2,
+          "Text": "    0 Warning(s)"
+        },
+        {
+          "Offset": "00:00:01.1391986",
+          "Kind": 2,
+          "Text": "    0 Error(s)"
+        },
+        {
+          "Offset": "00:00:01.1391987",
+          "Kind": 2,
+          "Text": ""
+        },
+        {
+          "Offset": "00:00:01.1391988",
+          "Kind": 2,
+          "Text": "Time Elapsed 00:00:00.81"
+        },
+        {
+          "Offset": "00:00:01.1392530",
+          "Kind": 4,
+          "Text": "exit code: 0"
+        },
+        {
+          "Offset": "00:00:01.1392532",
+          "Kind": 5,
+          "Text": "Build DemoForge"
+        }
+      ]
+    },
+    {
+      "Title": "Validate the self-demo recipe",
+      "Command": "dotnet run --no-build --project src/DemoForge.Cli -- validate docs/self-demo/demo.yml",
+      "WorkingDirectory": "C:\\proje\\demo-forge",
+      "StartedAtUtc": "2026-06-28T18:27:17.9633836+00:00",
+      "EndedAtUtc": "2026-06-28T18:27:18.7687794+00:00",
+      "DurationMs": 805,
+      "ExitCode": 0,
+      "TimedOut": false,
+      "Events": [
+        {
+          "Offset": "00:00:00.0000094",
+          "Kind": 0,
+          "Text": "Validate the self-demo recipe"
+        },
+        {
+          "Offset": "00:00:00.0000109",
+          "Kind": 1,
+          "Text": "$ dotnet run --no-build --project src/DemoForge.Cli -- validate docs/self-demo/demo.yml"
+        },
+        {
+          "Offset": "00:00:00.8054820",
+          "Kind": 2,
+          "Text": "Recipe is valid: C:\\proje\\demo-forge\\docs\\self-demo\\demo.yml"
+        },
+        {
+          "Offset": "00:00:00.8054953",
+          "Kind": 4,
+          "Text": "exit code: 0"
+        },
+        {
+          "Offset": "00:00:00.8054954",
+          "Kind": 5,
+          "Text": "Validate the self-demo recipe"
+        }
+      ]
+    },
+    {
+      "Title": "Generate artifacts from the bundled sample",
+      "Command": "dotnet run --no-build --project src/DemoForge.Cli -- run samples/cli-basic/.demoforge/demo.yml",
+      "WorkingDirectory": "C:\\proje\\demo-forge",
+      "StartedAtUtc": "2026-06-28T18:27:18.7688854+00:00",
+      "EndedAtUtc": "2026-06-28T18:27:22.4559265+00:00",
+      "DurationMs": 3687,
+      "ExitCode": 0,
+      "TimedOut": false,
+      "Events": [
+        {
+          "Offset": "00:00:00.0000063",
+          "Kind": 0,
+          "Text": "Generate artifacts from the bundled sample"
+        },
+        {
+          "Offset": "00:00:00.0000070",
+          "Kind": 1,
+          "Text": "$ dotnet run --no-build --project src/DemoForge.Cli -- run samples/cli-basic/.demoforge/demo.yml"
+        },
+        {
+          "Offset": "00:00:03.6870869",
+          "Kind": 2,
+          "Text": "Demo generated successfully."
+        },
+        {
+          "Offset": "00:00:03.6870880",
+          "Kind": 2,
+          "Text": "- transcript: C:\\proje\\demo-forge\\samples\\cli-basic\\assets\\demo\\transcript.txt"
+        },
+        {
+          "Offset": "00:00:03.6870881",
+          "Kind": 2,
+          "Text": "- session-json: C:\\proje\\demo-forge\\samples\\cli-basic\\assets\\demo\\session.json"
+        },
+        {
+          "Offset": "00:00:03.6870897",
+          "Kind": 2,
+          "Text": "- markdown: C:\\proje\\demo-forge\\samples\\cli-basic\\assets\\demo\\demo.md"
+        },
+        {
+          "Offset": "00:00:03.6870898",
+          "Kind": 2,
+          "Text": "- html: C:\\proje\\demo-forge\\samples\\cli-basic\\assets\\demo\\demo.html"
+        },
+        {
+          "Offset": "00:00:03.6870898",
+          "Kind": 2,
+          "Text": "- readme-snippet: "
+        },
+        {
+          "Offset": "00:00:03.6870911",
+          "Kind": 2,
+          "Text": "C:\\proje\\demo-forge\\samples\\cli-basic\\assets\\demo\\README-snippet.md"
+        },
+        {
+          "Offset": "00:00:03.6870913",
+          "Kind": 2,
+          "Text": "- manifest: C:\\proje\\demo-forge\\samples\\cli-basic\\assets\\demo\\manifest.json"
+        },
+        {
+          "Offset": "00:00:03.6870945",
+          "Kind": 4,
+          "Text": "exit code: 0"
+        },
+        {
+          "Offset": "00:00:03.6870952",
+          "Kind": 5,
+          "Text": "Generate artifacts from the bundled sample"
+        }
+      ]
+    }
+  ]
+}
