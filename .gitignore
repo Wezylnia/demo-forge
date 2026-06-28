@@ -1,0 +1,8 @@
+private-docs/
+bin/
+obj/
+artifacts/
+.vs/
+.idea/
+.demoforge/
+assets/

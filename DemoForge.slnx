@@ -1,0 +1,14 @@
+<Solution>
+  <Folder Name="/samples/" />
+  <Folder Name="/samples/fake-cli/">
+    <Project Path="samples/fake-cli/FakeCli/FakeCli.csproj" />
+  </Folder>
+  <Folder Name="/src/">
+    <Project Path="src/DemoForge.Cli/DemoForge.Cli.csproj" />
+    <Project Path="src/DemoForge.Core/DemoForge.Core.csproj" />
+    <Project Path="src/DemoForge.Media/DemoForge.Media.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/DemoForge.Core.Tests/DemoForge.Core.Tests.csproj" />
+  </Folder>
+</Solution>
