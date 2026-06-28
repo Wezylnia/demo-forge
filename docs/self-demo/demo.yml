@@ -1,0 +1,48 @@
+version: 1
+
+demo:
+  name: "DemoForge self-demo"
+  description: "DemoForge validates its own recipe and then generates artifacts from the bundled sample recipe."
+  outputDir: "docs/self-demo/artifacts"
+  cleanOutputDir: true
+
+terminal:
+  theme: "dark"
+  width: 100
+  height: 28
+  fontSize: 16
+  prompt: "$"
+  showPrompt: true
+
+workingDirectory: "."
+
+env:
+  DOTNET_CLI_UI_LANGUAGE: "en-US"
+
+setup:
+  - title: "Build DemoForge"
+    command: "dotnet build DemoForge.slnx"
+    timeoutSeconds: 120
+    expectExitCode: 0
+
+steps:
+  - title: "Validate the self-demo recipe"
+    command: "dotnet run --no-build --project src/DemoForge.Cli -- validate docs/self-demo/demo.yml"
+    timeoutSeconds: 60
+    expectExitCode: 0
+
+  - title: "Generate artifacts from the bundled sample"
+    command: "dotnet run --no-build --project src/DemoForge.Cli -- run samples/cli-basic/.demoforge/demo.yml"
+    timeoutSeconds: 120
+    expectExitCode: 0
+
+export:
+  formats:
+    - transcript
+    - session-json
+    - markdown
+    - html
+    - readme-snippet
+  readme:
+    title: "Self-demo"
+    relativeAssetPath: "docs/self-demo/artifacts/demo.html"

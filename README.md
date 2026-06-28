@@ -70,6 +70,27 @@ Or run the included sample:
 dotnet run --project src/DemoForge.Cli -- run samples/cli-basic/.demoforge/demo.yml
 ```
 
+## Self-demo
+
+DemoForge now demos itself. The recipe at [`docs/self-demo/demo.yml`](docs/self-demo/demo.yml) validates the project recipe and then generates artifacts from the bundled sample.
+
+- [Open the generated HTML demo](docs/self-demo/artifacts/demo.html)
+- [Read the generated Markdown demo](docs/self-demo/artifacts/demo.md)
+- [Read the raw transcript](docs/self-demo/artifacts/transcript.txt)
+
+Excerpt from the generated self-demo:
+
+```bash
+$ dotnet build DemoForge.slnx
+Build succeeded.
+
+$ dotnet run --no-build --project src/DemoForge.Cli -- validate docs/self-demo/demo.yml
+Recipe is valid: C:\proje\demo-forge\docs\self-demo\demo.yml
+
+$ dotnet run --no-build --project src/DemoForge.Cli -- run samples/cli-basic/.demoforge/demo.yml
+Demo generated successfully.
+```
+
 ## Example recipe
 
 ```yaml

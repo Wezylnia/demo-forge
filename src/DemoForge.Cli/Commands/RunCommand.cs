@@ -23,7 +23,7 @@ public sealed class RunCommand : AsyncCommand<RunCommand.Settings>
     {
         var recipePath = settings.ResolveRecipePath();
         var loaded = AppHost.Services.RecipeLoader.Load(recipePath);
-        var projectRoot = ResolveProjectRoot(loaded.SourcePath);
+        var projectRoot = ProjectRootResolver.ResolveFromRecipePath(loaded.SourcePath);
 
         var result = await AppHost.Services.DemoRunner.RunAsync(
             loaded.Recipe,
@@ -54,13 +54,5 @@ public sealed class RunCommand : AsyncCommand<RunCommand.Settings>
         }
 
         return 0;
-    }
-
-    private static string ResolveProjectRoot(string recipePath)
-    {
-        var recipeDirectory = Path.GetDirectoryName(recipePath)!;
-        return string.Equals(Path.GetFileName(recipeDirectory), ".demoforge", StringComparison.OrdinalIgnoreCase)
-            ? Directory.GetParent(recipeDirectory)!.FullName
-            : recipeDirectory;
     }
 }

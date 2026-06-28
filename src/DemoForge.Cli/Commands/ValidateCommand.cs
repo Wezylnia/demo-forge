@@ -10,7 +10,7 @@ public sealed class ValidateCommand : Command<RecipeSettings>
     {
         var recipePath = settings.ResolveRecipePath();
         var loaded = AppHost.Services.RecipeLoader.Load(recipePath);
-        var validation = AppHost.Services.RecipeValidator.Validate(loaded.Recipe, ResolveProjectRoot(loaded.SourcePath));
+        var validation = AppHost.Services.RecipeValidator.Validate(loaded.Recipe, ProjectRootResolver.ResolveFromRecipePath(loaded.SourcePath));
 
         if (!validation.IsValid)
         {
@@ -25,13 +25,5 @@ public sealed class ValidateCommand : Command<RecipeSettings>
 
         AnsiConsole.MarkupLine($"[green]Recipe is valid:[/] {loaded.SourcePath}");
         return 0;
-    }
-
-    private static string ResolveProjectRoot(string recipePath)
-    {
-        var recipeDirectory = Path.GetDirectoryName(recipePath)!;
-        return string.Equals(Path.GetFileName(recipeDirectory), ".demoforge", StringComparison.OrdinalIgnoreCase)
-            ? Directory.GetParent(recipeDirectory)!.FullName
-            : recipeDirectory;
     }
 }

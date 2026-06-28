@@ -79,7 +79,15 @@ public sealed class DemoRunner
 
         foreach (var step in recipe.Setup)
         {
-            sessionSteps.Add(await RunStepAsync(step, recipe, projectRoot, isSetup: true, cancellationToken));
+            var executedStep = await RunStepAsync(step, recipe, projectRoot, isSetup: true, cancellationToken);
+            sessionSteps.Add(executedStep);
+
+            var expectedExitCode = step.ExpectExitCode;
+            var failed = executedStep.TimedOut || executedStep.ExitCode != expectedExitCode;
+            if (failed && !step.ContinueOnError)
+            {
+                throw CreateStepFailure(step, executedStep);
+            }
         }
 
         foreach (var step in recipe.Steps)
@@ -91,7 +99,7 @@ public sealed class DemoRunner
             var failed = executedStep.TimedOut || executedStep.ExitCode != expectedExitCode;
             if (failed && !step.ContinueOnError)
             {
-                break;
+                throw CreateStepFailure(step, executedStep);
             }
         }
 
@@ -129,5 +137,15 @@ public sealed class DemoRunner
     {
         var path = string.IsNullOrWhiteSpace(stepWorkingDirectory) ? recipeWorkingDirectory : stepWorkingDirectory;
         return Path.GetFullPath(Path.Combine(projectRoot, path));
+    }
+
+    private static InvalidOperationException CreateStepFailure(CommandStep step, ExecutedStepSession executedStep)
+    {
+        var stepName = string.IsNullOrWhiteSpace(step.Title) ? step.Command : step.Title;
+        var reason = executedStep.TimedOut
+            ? "timed out"
+            : $"returned exit code {executedStep.ExitCode} (expected {step.ExpectExitCode})";
+
+        return new InvalidOperationException($"Step failed: {stepName}{Environment.NewLine}Command: {step.Command}{Environment.NewLine}Reason: {reason}");
     }
 }
